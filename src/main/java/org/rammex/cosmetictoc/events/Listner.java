@@ -44,7 +44,7 @@ public class Listner implements Listener {
 
 
         if(it.getType() == Material.COMPASS && it.hasItemMeta() && it.getItemMeta().hasDisplayName() && it.getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.AQUA+"Cosmetics")){
-            Inventory inv = Bukkit.createInventory(null, 27, "§aCosmétics");
+            Inventory inv = Bukkit.createInventory(null, 27, "§a§l✭ Cosmétics ✭");
             inv.setItem(11, getItem(Material.LEATHER_CHESTPLATE, "§6Tenues"));
             inv.setItem(13, getItem(Material.NETHER_STAR, "§fParticules"));
             inv.setItem(26, getItem(Material.BARRIER, "§4Retirer Cosmetics"));
@@ -68,7 +68,7 @@ public class Listner implements Listener {
 
         if(current == null) return;
 
-        if(event.getView().getTitle().equalsIgnoreCase("§aCosmétics")) {
+        if(event.getView().getTitle().equalsIgnoreCase("§a§l✭ Cosmétics ✭")) {
 
             event.setCancelled(true);
 
@@ -97,7 +97,7 @@ public class Listner implements Listener {
 
         }
 
-        if(event.getView().getTitle().equalsIgnoreCase("§fParticules")){
+        if(event.getView().getTitle().equalsIgnoreCase("§f§l★ Particules ★")){
             event.setCancelled(true);
             if(current.getType() == Material.TOTEM_OF_UNDYING){
                 totemeffect(player);
@@ -141,7 +141,7 @@ public class Listner implements Listener {
         }
 
 
-        if(event.getView().getTitle().equalsIgnoreCase("§6Tenues")){
+        if(event.getView().getTitle().equalsIgnoreCase("§6§l✯ Tenues ✯")){
 
             event.setCancelled(true);
 
@@ -228,26 +228,26 @@ public class Listner implements Listener {
     }
 
     public void Tenue(Player player){
-        Inventory inv = Bukkit.createInventory(null, 27, "§6Tenues");
+        Inventory inv = Bukkit.createInventory(null, 36, "§6§l✯ Tenues ✯");
 
         inv.setItem(11, getItem(Material.TURTLE_HELMET, "§2Tortue"));
         inv.setItem(13, getItem(Material.GLASS, "§fAstronaute"));
         inv.setItem(15, getItem(Material.TNT, "§cBombe-Man"));
         inv.setItem(21, getItem(Material.ZOMBIE_HEAD, "§3Zombie"));
         inv.setItem(23, getItem(Material.JUNGLE_LEAVES, "§aTree-Man"));
-        inv.setItem(26, getItem(Material.BARRIER, "§4Retirer Cosmetics"));
+        inv.setItem(35, getItem(Material.BARRIER, "§4Retirer Cosmetics"));
         player.openInventory(inv);
     }
 
 
     public void particules(Player player){
-        Inventory inv = Bukkit.createInventory(null, 27, "§fParticules");
+        Inventory inv = Bukkit.createInventory(null, 36, "§f§l★ Particules ★");
         inv.setItem(11, getItem(Material.TOTEM_OF_UNDYING, "§6Totem"));
         inv.setItem(13, getItem(Material.FLINT_AND_STEEL, "§cMarche du Feu"));
         inv.setItem(15, getItem(Material.BLAZE_POWDER, "§7Fumé"));
         inv.setItem(21, getItem(Material.APPLE, "§4Coeur"));
         inv.setItem(23, getItem(Material.JUKEBOX, "§eMusique"));
-        inv.setItem(26, getItem(Material.BARRIER, "§4Retirer Cosmetics"));
+        inv.setItem(35, getItem(Material.BARRIER, "§4Retirer Cosmetics"));
         player.openInventory(inv);
     }
 }
