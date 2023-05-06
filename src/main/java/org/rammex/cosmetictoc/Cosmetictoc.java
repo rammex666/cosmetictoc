@@ -15,7 +15,7 @@ public final class Cosmetictoc extends JavaPlugin {
         getLogger().info("-----------------------");
         getLogger().info("       Cosmetictoc   ");
         getLogger().info("          On");
-        getLogger().info("       "+pdf.getVersion());
+        getLogger().info("      "+pdf.getVersion());
         getLogger().info("-----------------------");
         getPluginManager().registerEvents(new Listner(), this);
 
@@ -26,7 +26,7 @@ public final class Cosmetictoc extends JavaPlugin {
         getLogger().info("-----------------------");
         getLogger().info("       Cosmetictoc   ");
         getLogger().info("          Off");
-        getLogger().info("       "+pdf.getVersion());
+        getLogger().info("      "+pdf.getVersion());
         getLogger().info("-----------------------");
     }
 }
