@@ -2,6 +2,7 @@ package org.rammex.cosmetictoc.events;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -13,6 +14,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 public class Listner implements Listener {
 
@@ -64,6 +66,9 @@ public class Listner implements Listener {
             if(current.getType() == Material.TURTLE_HELMET){
                 player.closeInventory();
                 player.getInventory().setHelmet(getItem(Material.TURTLE_HELMET, "§2Casque Tortue"));
+                player.getInventory().setChestplate(getLeather(Material.LEATHER_CHESTPLATE, "§2Plastron Tortue", Color.GREEN));
+                player.getInventory().setBoots(getLeather(Material.LEATHER_BOOTS, "§2Chaussures Tortue", Color.GREEN));
+                player.getInventory().setLeggings(getLeather(Material.LEATHER_LEGGINGS, "§2Pentalon Tortue", Color.GREEN));
                 //Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "gamemode survivale");
             }
 
@@ -71,11 +76,21 @@ public class Listner implements Listener {
 
     }
 
-    public ItemStack getItem(Material material, String customName){
+    public ItemStack getItem(Material material, String customName) {
         ItemStack it = new ItemStack(material);
         ItemMeta customM = it.getItemMeta();
-        if(customName != null) customM.setDisplayName(customName);
+        if (customName != null) customM.setDisplayName(customName);
         it.setItemMeta(customM);
         return it;
+    }
+
+    public ItemStack getLeather(Material material, String customName, Color color){
+        ItemStack item = new ItemStack(material);
+        ItemMeta meta = item.hasItemMeta() ? item.getItemMeta() : Bukkit.getItemFactory().getItemMeta(item.getType());
+        meta.setDisplayName(customName);
+        LeatherArmorMeta leatherArmorMeta = (LeatherArmorMeta) meta;
+        leatherArmorMeta.setColor(color);
+        item.setItemMeta(leatherArmorMeta);
+        return item;
     }
 }
