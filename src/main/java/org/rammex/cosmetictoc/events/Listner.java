@@ -45,8 +45,9 @@ public class Listner implements Listener {
         if(it.getType() == Material.COMPASS && it.hasItemMeta() && it.getItemMeta().hasDisplayName() && it.getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.AQUA+"Cosmetics")){
             Inventory inv = Bukkit.createInventory(null, 27, "§aCosmétics");
 
-            inv.setItem(11, getItem(Material.TURTLE_HELMET, "§2Tortue"));
+            inv.setItem(11, getItem(Material.TURTLE_HELMET, "§2TORTUE"));
 
+            inv.setItem(26, getItem(Material.BARRIER, "§4RETIRER COSMETICS"));
             player.openInventory(inv);
         }
     }
@@ -69,6 +70,15 @@ public class Listner implements Listener {
                 player.getInventory().setChestplate(getLeather(Material.LEATHER_CHESTPLATE, "§2Plastron Tortue", Color.GREEN));
                 player.getInventory().setBoots(getLeather(Material.LEATHER_BOOTS, "§2Chaussures Tortue", Color.GREEN));
                 player.getInventory().setLeggings(getLeather(Material.LEATHER_LEGGINGS, "§2Pentalon Tortue", Color.GREEN));
+                //Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "gamemode survivale");
+            }
+
+            if(current.getType() == Material.BARRIER){
+                player.closeInventory();
+                player.getInventory().setHelmet(null);
+                player.getInventory().setChestplate(null);
+                player.getInventory().setBoots(null);
+                player.getInventory().setLeggings(null);
                 //Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "gamemode survivale");
             }
 
