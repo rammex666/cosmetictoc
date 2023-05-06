@@ -56,6 +56,13 @@ public class Listner implements Listener {
         Player player =(Player) event.getWhoClicked();
         ItemStack current = event.getCurrentItem();
 
+        if(player.isOp()){
+            event.setCancelled(false);
+        } else{
+            event.setCancelled(true);
+        }
+
+
         if(current == null) return;
 
         if(event.getView().getTitle().equalsIgnoreCase("§aCosmétics")) {
@@ -81,7 +88,6 @@ public class Listner implements Listener {
         if(event.getView().getTitle().equalsIgnoreCase("§6Tenues")){
 
             event.setCancelled(true);
-
 
             if(current.getType() == Material.TURTLE_HELMET){
                 player.closeInventory();
