@@ -90,6 +90,9 @@ public class Listner implements Listener {
                 Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "effect clear "+  player.getName());
                 Bukkit.getScheduler().cancelTask(firewalk);
                 Bukkit.getScheduler().cancelTask(totem);
+                Bukkit.getScheduler().cancelTask(burn);
+                Bukkit.getScheduler().cancelTask(heart);
+                Bukkit.getScheduler().cancelTask(juke);
             }
 
         }
@@ -106,6 +109,21 @@ public class Listner implements Listener {
                 player.closeInventory();
             }
 
+            if(current.getType() == Material.BLAZE_POWDER){
+                burnwalkeffect(player);
+                player.closeInventory();
+            }
+
+            if(current.getType() == Material.APPLE){
+                hearteffect(player);
+                player.closeInventory();
+            }
+
+            if(current.getType() == Material.JUKEBOX){
+                jukeeffect(player);
+                player.closeInventory();
+            }
+
             if(current.getType() == Material.BARRIER) {
                 player.closeInventory();
                 player.getInventory().setHelmet(null);
@@ -115,6 +133,9 @@ public class Listner implements Listener {
                 Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "effect clear "+  player.getName());
                 Bukkit.getScheduler().cancelTask(firewalk);
                 Bukkit.getScheduler().cancelTask(totem);
+                Bukkit.getScheduler().cancelTask(burn);
+                Bukkit.getScheduler().cancelTask(heart);
+                Bukkit.getScheduler().cancelTask(juke);
             }
 
         }
@@ -160,6 +181,9 @@ public class Listner implements Listener {
                 Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "effect clear "+  player.getName());
                 Bukkit.getScheduler().cancelTask(firewalk);
                 Bukkit.getScheduler().cancelTask(totem);
+                Bukkit.getScheduler().cancelTask(burn);
+                Bukkit.getScheduler().cancelTask(heart);
+                Bukkit.getScheduler().cancelTask(juke);
                 //Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "gamemode survivale");
             }
 
@@ -220,6 +244,9 @@ public class Listner implements Listener {
         Inventory inv = Bukkit.createInventory(null, 27, "§fParticules");
         inv.setItem(11, getItem(Material.TOTEM_OF_UNDYING, "§6Totem"));
         inv.setItem(13, getItem(Material.FLINT_AND_STEEL, "§cMarche du Feu"));
+        inv.setItem(15, getItem(Material.BLAZE_POWDER, "§7Fumé"));
+        inv.setItem(21, getItem(Material.APPLE, "§4Coeur"));
+        inv.setItem(23, getItem(Material.JUKEBOX, "§eMusique"));
         inv.setItem(26, getItem(Material.BARRIER, "§4Retirer Cosmetics"));
         player.openInventory(inv);
     }
