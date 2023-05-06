@@ -107,6 +107,15 @@ public class Listner implements Listener {
                 //Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "gamemode survivale");
             }
 
+            if(current.getType() == Material.TNT){
+                player.closeInventory();
+                player.getInventory().setHelmet(getItem(Material.TNT, "§cCasque Bombe-Man"));
+                player.getInventory().setChestplate(getLeather(Material.LEATHER_CHESTPLATE, "§cPlastron Bombe-Man", Color.RED));
+                player.getInventory().setBoots(getLeather(Material.LEATHER_BOOTS, "§cChaussures Bombe-Man", Color.RED));
+                player.getInventory().setLeggings(getLeather(Material.LEATHER_LEGGINGS, "§cPentalon Bombe-Man", Color.RED));
+                //Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "gamemode survivale");
+            }
+
             if(current.getType() == Material.BARRIER){
                 player.closeInventory();
                 player.getInventory().setHelmet(null);
@@ -114,6 +123,24 @@ public class Listner implements Listener {
                 player.getInventory().setBoots(null);
                 player.getInventory().setLeggings(null);
                 Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "effect clear "+  player.getName());
+                //Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "gamemode survivale");
+            }
+
+            if(current.getType() == Material.ZOMBIE_HEAD){
+                player.closeInventory();
+                player.getInventory().setHelmet(getItem(Material.ZOMBIE_HEAD, "§cCasque Zombie"));
+                player.getInventory().setChestplate(getLeather(Material.LEATHER_CHESTPLATE, "§cPlastron Zombie", Color.fromBGR(241,  208, 116)));
+                player.getInventory().setBoots(getLeather(Material.LEATHER_BOOTS, "§cChaussures Zombie", Color.GRAY));
+                player.getInventory().setLeggings(getLeather(Material.LEATHER_LEGGINGS, "§cPentalon Zombie", Color.fromBGR(186, 142, 58)));
+                //Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "gamemode survivale");
+            }
+
+            if(current.getType() == Material.JUNGLE_LEAVES){
+                player.closeInventory();
+                player.getInventory().setHelmet(getItem(Material.JUNGLE_LEAVES, "§aCasque Tree-Man"));
+                player.getInventory().setChestplate(getLeather(Material.LEATHER_CHESTPLATE, "§aPlastron Tree-Man", Color.fromBGR(58, 242, 75)));
+                player.getInventory().setBoots(getLeather(Material.LEATHER_BOOTS, "§aChaussures Tree-Man", Color.fromBGR(58, 242, 75)));
+                player.getInventory().setLeggings(getLeather(Material.LEATHER_LEGGINGS, "§aPentalon Tree-Man", Color.fromBGR(58, 242, 75)));
                 //Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "gamemode survivale");
             }
 
@@ -144,6 +171,9 @@ public class Listner implements Listener {
 
         inv.setItem(11, getItem(Material.TURTLE_HELMET, "§2Tortue"));
         inv.setItem(13, getItem(Material.GLASS, "§fAstronaute"));
+        inv.setItem(15, getItem(Material.TNT, "§cBombe-Man"));
+        inv.setItem(21, getItem(Material.ZOMBIE_HEAD, "§3Zombie"));
+        inv.setItem(23, getItem(Material.JUNGLE_LEAVES, "§aTree-Man"));
         inv.setItem(26, getItem(Material.BARRIER, "§4Retirer Cosmetics"));
         player.openInventory(inv);
     }
