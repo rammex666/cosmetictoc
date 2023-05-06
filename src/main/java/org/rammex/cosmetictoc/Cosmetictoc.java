@@ -10,14 +10,18 @@ public final class Cosmetictoc extends JavaPlugin {
 
     PluginDescriptionFile pdf = this.getDescription(); //Gets plugin.yml
 
+    public static Cosmetictoc instance;
+
     @Override
     public void onEnable() {
+        instance = this;
         getLogger().info("-----------------------");
         getLogger().info("       Cosmetictoc   ");
         getLogger().info("          On");
         getLogger().info("      "+pdf.getVersion());
         getLogger().info("-----------------------");
         getPluginManager().registerEvents(new Listner(), this);
+
 
     }
 
@@ -28,5 +32,10 @@ public final class Cosmetictoc extends JavaPlugin {
         getLogger().info("          Off");
         getLogger().info("      "+pdf.getVersion());
         getLogger().info("-----------------------");
+
+    }
+
+    public static Cosmetictoc getInstance(){
+        return instance;
     }
 }

@@ -1,4 +1,4 @@
 name: cosmetictoc
-version: '1.0-SNAPSHOT'
+version: '1.4'
 main: org.rammex.cosmetictoc.Cosmetictoc
 api-version: 1.16

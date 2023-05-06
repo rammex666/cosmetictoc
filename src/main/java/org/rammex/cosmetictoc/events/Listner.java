@@ -1,9 +1,6 @@
 package org.rammex.cosmetictoc.events;
 
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Color;
-import org.bukkit.Material;
+import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -15,6 +12,10 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
+import org.rammex.cosmetictoc.Cosmetictoc;
+
+import static org.rammex.cosmetictoc.events.Effects.*;
+
 
 public class Listner implements Listener {
 
@@ -45,10 +46,12 @@ public class Listner implements Listener {
         if(it.getType() == Material.COMPASS && it.hasItemMeta() && it.getItemMeta().hasDisplayName() && it.getItemMeta().getDisplayName().equalsIgnoreCase(ChatColor.AQUA+"Cosmetics")){
             Inventory inv = Bukkit.createInventory(null, 27, "§aCosmétics");
             inv.setItem(11, getItem(Material.LEATHER_CHESTPLATE, "§6Tenues"));
+            inv.setItem(13, getItem(Material.NETHER_STAR, "§fParticules"));
             inv.setItem(26, getItem(Material.BARRIER, "§4Retirer Cosmetics"));
             player.openInventory(inv);
         }
     }
+
 
     @EventHandler
     public void onClick(InventoryClickEvent event){
@@ -73,6 +76,11 @@ public class Listner implements Listener {
                 player.closeInventory();
                 Tenue(player);
             }
+
+            if(current.getType() == Material.NETHER_STAR){
+                player.closeInventory();
+                particules(player);
+            }
             if(current.getType() == Material.BARRIER) {
                 player.closeInventory();
                 player.getInventory().setHelmet(null);
@@ -80,6 +88,33 @@ public class Listner implements Listener {
                 player.getInventory().setBoots(null);
                 player.getInventory().setLeggings(null);
                 Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "effect clear "+  player.getName());
+                Bukkit.getScheduler().cancelTask(firewalk);
+                Bukkit.getScheduler().cancelTask(totem);
+            }
+
+        }
+
+        if(event.getView().getTitle().equalsIgnoreCase("§fParticules")){
+            event.setCancelled(true);
+            if(current.getType() == Material.TOTEM_OF_UNDYING){
+                totemeffect(player);
+                player.closeInventory();
+            }
+
+            if(current.getType() == Material.FLINT_AND_STEEL){
+                firewalkeffect(player);
+                player.closeInventory();
+            }
+
+            if(current.getType() == Material.BARRIER) {
+                player.closeInventory();
+                player.getInventory().setHelmet(null);
+                player.getInventory().setChestplate(null);
+                player.getInventory().setBoots(null);
+                player.getInventory().setLeggings(null);
+                Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "effect clear "+  player.getName());
+                Bukkit.getScheduler().cancelTask(firewalk);
+                Bukkit.getScheduler().cancelTask(totem);
             }
 
         }
@@ -123,6 +158,8 @@ public class Listner implements Listener {
                 player.getInventory().setBoots(null);
                 player.getInventory().setLeggings(null);
                 Bukkit.getServer().dispatchCommand(Bukkit.getServer().getConsoleSender(), "effect clear "+  player.getName());
+                Bukkit.getScheduler().cancelTask(firewalk);
+                Bukkit.getScheduler().cancelTask(totem);
                 //Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "gamemode survivale");
             }
 
@@ -174,6 +211,15 @@ public class Listner implements Listener {
         inv.setItem(15, getItem(Material.TNT, "§cBombe-Man"));
         inv.setItem(21, getItem(Material.ZOMBIE_HEAD, "§3Zombie"));
         inv.setItem(23, getItem(Material.JUNGLE_LEAVES, "§aTree-Man"));
+        inv.setItem(26, getItem(Material.BARRIER, "§4Retirer Cosmetics"));
+        player.openInventory(inv);
+    }
+
+
+    public void particules(Player player){
+        Inventory inv = Bukkit.createInventory(null, 27, "§fParticules");
+        inv.setItem(11, getItem(Material.TOTEM_OF_UNDYING, "§6Totem"));
+        inv.setItem(13, getItem(Material.FLINT_AND_STEEL, "§cMarche du Feu"));
         inv.setItem(26, getItem(Material.BARRIER, "§4Retirer Cosmetics"));
         player.openInventory(inv);
     }
