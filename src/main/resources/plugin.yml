@@ -1,0 +1,4 @@
+name: cosmetictoc
+version: '${project.version}'
+main: org.rammex.cosmetictoc.Cosmetictoc
+api-version: 1.16

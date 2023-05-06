@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="cosmetictoc:jar">
+    <output-path>$USER_HOME$/Desktop/serveur_survie/plugins</output-path>
+    <root id="archive" name="cosmetictoc.jar">
+      <element id="module-output" name="cosmetictoc" />
+    </root>
+  </artifact>
+</component>
